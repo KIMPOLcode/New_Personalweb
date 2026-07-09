@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Studi Kasus Data Analyst | Whytriii_</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
+    <style>
+        /* Menggunakan ulang variabel CSS dari halaman utama agar konsisten */
+        :root {
+            --bg-main: #0B0F19;
+            --bg-secondary: #111827;
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --text-primary: #F3F4F6;
+            --text-secondary: #9CA3AF;
+            --accent-gradient: linear-gradient(135deg, #3B82F6, #8B5CF6);
+            --accent-solid: #3B82F6;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --glass-blur: blur(12px);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            line-height: 1.7;
+        }
+
+        /* Navbar Sederhana untuk sub-halaman */
+        .simple-nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 95%;
+            max-width: 1200px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(17, 24, 39, 0.8);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            z-index: 1000;
+        }
+
+        .back-btn {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .back-btn:hover {
+            color: var(--accent-solid);
+        }
+
+        /* Container Konten Utama */
+        .case-container {
+            max-width: 900px;
+            margin: 150px auto 100px;
+            padding: 0 5%;
+        }
+
+        .case-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .badge {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent-solid);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .case-header h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .case-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Section Konten */
+        .content-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 1.5rem;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            backdrop-filter: var(--glass-blur);
+        }
+
+        .content-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: white;
+        }
+
+        .content-section h2 i {
+            color: var(--accent-solid);
+        }
+
+        .content-section p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .content-section ul {
+            padding-left: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .content-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        /* Mockup / Image Container */
+        .mockup-wrapper {
+            width: 100%;
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            margin: 2rem 0;
+            background: #1e293b;
+            position: relative;
+        }
+
+        .mockup-wrapper img {
+            width: 100%;
+            display: block;
+            /* Filter blur bisa digunakan jika ingin ngeblur SS asli, 
+               atau pakai gambar mockup dummy */
+            /* filter: blur(5px); */
+        }
+
+        .nda-notice {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid #ef4444;
+            padding: 1rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #fca5a5;
+        }
+
+        /* Tools Tags */
+        .tools-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .tool-tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 768px) {
+            .content-section {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="simple-nav">
+        <a href="index.html" class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i> Kembali ke Portfolio
+        </a>
+        <div style="font-weight: 600;">Whytriii_</div>
+    </nav>
+
+    <main class="case-container">
+
+        <header class="case-header">
+            <span class="badge">Professional Experience</span>
+
+            <h1>
+                Data Analyst Internship
+            </h1>
+
+            <p>
+                PT YAIJ Solusi Internasional<br>
+                Januari 2026 – Juli 2026
+            </p>
+        </header>
+
+        <!-- ABOUT -->
+        <section class="content-section">
+
+            <h2>
+                <i class="fa-solid fa-building"></i>
+                Tentang Pekerjaan
+            </h2>
+
+            <p>
+                Selama menjalani program magang sebagai <b>Data Analyst</b>,
+                saya bertanggung jawab membantu berbagai divisi dalam
+                mengolah data operasional menjadi laporan yang mudah dipahami
+                oleh manajemen.
+            </p>
+
+            <p>
+                Sebagian besar pekerjaan saya berfokus pada
+                otomatisasi laporan menggunakan Google Sheets,
+                pembuatan dashboard interaktif di Looker Studio,
+                analisis KPI karyawan,
+                validasi data,
+                serta memastikan kualitas data sebelum digunakan
+                sebagai dasar pengambilan keputusan.
+            </p>
+
+        </section>
+
+        <!-- RESPONSIBILITIES -->
+        <section class="content-section">
+
+            <h2>
+                <i class="fa-solid fa-list-check"></i>
+                Tanggung Jawab
+            </h2>
+
+            <ul>
+
+                <li>
+                    Mengumpulkan data operasional dari berbagai divisi perusahaan.
+                </li>
+
+                <li>
+                    Membersihkan (Data Cleaning), memvalidasi,
+                    dan memastikan konsistensi data sebelum diproses.
+                </li>
+
+                <li>
+                    Membuat dashboard interaktif menggunakan
+                    Google Looker Studio.
+                </li>
+
+                <li>
+                    Mendesain KPI Dashboard untuk monitoring performa
+                    karyawan dan divisi.
+                </li>
+
+                <li>
+                    Membuat laporan operasional harian,
+                    mingguan,
+                    dan bulanan.
+                </li>
+
+                <li>
+                    Mengembangkan otomatisasi menggunakan
+                    Google Sheets Formula
+                    dan Google Apps Script.
+                </li>
+
+                <li>
+                    Melakukan analisis tren performa berdasarkan data KPI.
+                </li>
+
+                <li>
+                    Berkolaborasi dengan tim HR,
+                    Finance,
+                    Marketing,
+                    dan Management Development Program (MDP).
+                </li>
+
+            </ul>
+
+        </section>
+
+        <!-- PROJECT -->
+        <section class="content-section">
+
+            <h2>
+
+                <i class="fa-solid fa-folder-open"></i>
+
+                Project yang Dikerjakan
+
+            </h2>
+
+            <ul>
+
+                <li>
+                    Dashboard KPI Karyawan
+                </li>
+
+                <li>
+                    Dashboard Recruitment
+                </li>
+
+                <li>
+                    Dashboard Pendapatan Per Program
+                </li>
+
+                <li>
+                    Dashboard Finance & Pembayaran
+                </li>
+
+                <li>
+                    Rekonsiliasi Data Peserta
+                </li>
+
+                <li>
+                    Otomatisasi Google Sheets menggunakan Formula
+                    ARRAYFORMULA, QUERY, FILTER,
+                    LET, SUMIFS,
+                    COUNTIFS,
+                    IMPORTRANGE,
+                    dan Apps Script.
+                </li>
+
+                <li>
+                    Monitoring performa konsultan berdasarkan KPI.
+                </li>
+
+                <li>
+                    Penyusunan dataset untuk kebutuhan dashboard
+                    manajemen.
+                </li>
+            </ul>
+        </section>
+
+        <!-- WORKFLOW -->
+        <section class="content-section">
+            <h2>
+                <i class="fa-solid fa-gears"></i>
+                Workflow Pekerjaan
+            </h2>
+            <ol>
+                <li>Mengumpulkan data dari berbagai spreadsheet perusahaan.</li>
+                <li>Melakukan data cleaning,validasi,dan pengecekan duplikasi.</li>
+                <li>Menyusun formula otomatisagar proses pelaporan lebih efisien.</li>
+                <li>Mengolah data menjadi dataset siap pakai.</li>
+                <li>Membuat visualisasi menggunakan Looker Studio.</li>
+                <li>Menyampaikan insight kepada manajemen.</li>
+            </ol>
+        </section>
+
+        <!-- TOOLS -->
+        <section class="content-section">
+            <h2>
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                Tools & Technology
+            </h2>
+            <div class="tools-list">
+                <span class="tool-tag">Google Sheets</span>
+                <span class="tool-tag">Microsoft Excel</span>
+                <span class="tool-tag">Looker Studio</span>
+                <span class="tool-tag">Google Apps Script</span>
+                <span class="tool-tag">Python</span>
+                <span class="tool-tag">Pandas</span>
+                <span class="tool-tag">NumPy</span>
+            </div>
+        </section>
+
+        <!-- IMPACT -->
+        <section class="content-section">
+            <h2>
+                <i class="fa-solid fa-chart-line"></i>
+                Dampak Pekerjaan
+            </h2>
+
+            <ul>
+                <li>Mengurangi proses pelaporan manual melalui otomatisasi Google Sheets.</li>
+                <li>Mempermudah monitoring KPI karyawan melalui dashboard interaktif.</li>
+                <li>Membantu menjaga kualitas data melalui proses validasi dan rekonsiliasi.</li>
+                <li>Menyediakan laporan operasional yang lebih cepat dan akurat untuk manajemen.</li>
+                <li>Mendukung proses pengambilan keputusan berbasis data.</li>
+            </ul>
+
+        </section>
+        <!-- Section 4: Cuplikan Hasil / Dashboard -->
+        <section class="content-section">
+            <h2><i class="fa-solid fa-chart-pie"></i> Visualisasi & Dashboard (Mockup)</h2>
+
+            <div class="nda-notice">
+                <i class="fa-solid fa-lock"></i> <strong>NDA Notice:</strong> Dikarenakan kebijakan kerahasiaan
+                perusahaan (Non-Disclosure Agreement), data asli, angka spesifik, dan nama klien pada gambar di bawah
+                telah disamarkan atau menggunakan data dummy. Struktur visualisasi mewakili arsitektur nyata yang saya
+                bangun.
+            </div>
+
+            <!-- Tempatkan gambar SS/Mockup dashboard kamu di sini -->
+            <div class="mockup-wrapper">
+                <!-- Ganti src dengan screenshot dashboard kamu (dummy/blur) -->
+                <img src="Img\Dashboard.png" alt="Mockup Dashboard Data Analyst"
+                    onerror="this.style.backgroundColor='#1e293b'; this.style.height='300px';">
+            </div>
+            <div class="mockup-wrapper">
+                <!-- Ganti src dengan screenshot dashboard kamu (dummy/blur) -->
+                <img src="Img\KPI.png" alt="Mockup Dashboard Data Analyst"
+                    onerror="this.style.backgroundColor='#1e293b'; this.style.height='300px';">
+            </div>
+            <div class="mockup-wrapper">
+                <!-- Ganti src dengan screenshot dashboard kamu (dummy/blur) -->
+                <img src="Img\Seleksi Peserta.png" alt="Mockup Dashboard Data Analyst"
+                    onerror="this.style.backgroundColor='#1e293b'; this.style.height='300px';">
+            </div>
+            <div class="mockup-wrapper">
+                <!-- Ganti src dengan screenshot dashboard kamu (dummy/blur) -->
+                <img src="Img\HR.png" alt="Mockup Dashboard Data Analyst"
+                    onerror="this.style.backgroundColor='#1e293b'; this.style.height='300px';">
+            </div>
+            <p style="font-size: 0.9rem; text-align: center;">
+                <em>Contoh tampilan Dashboard Performa KPI yang dirancang untuk pemantauan harian.</em>
+            </p>
+        </section>
+
+    </main>
+
+</body>
+
+</html>
