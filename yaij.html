@@ -80,7 +80,8 @@
 
         /* Container Konten Utama */
         .case-container {
-            max-width: 900px;
+            max-width: 1200px;
+            /* DIUBAH: Dari 900px menjadi 1200px agar lebih lebar di desktop */
             margin: 150px auto 100px;
             padding: 0 5%;
         }
@@ -141,7 +142,8 @@
             margin-bottom: 1.5rem;
         }
 
-        .content-section ul {
+        .content-section ul,
+        .content-section ol {
             padding-left: 1.5rem;
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
@@ -165,9 +167,6 @@
         .mockup-wrapper img {
             width: 100%;
             display: block;
-            /* Filter blur bisa digunakan jika ingin ngeblur SS asli, 
-               atau pakai gambar mockup dummy */
-            /* filter: blur(5px); */
         }
 
         .nda-notice {
@@ -196,9 +195,48 @@
             color: var(--text-primary);
         }
 
+        /* --- CSS TAMBAHAN UNTUK GALERI FOTO --- */
+        .kegiatan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            /* Diperbesar sedikit min-width nya agar foto tidak terlalu kecil di layar lebar */
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .kegiatan-item {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-secondary);
+        }
+
+        .kegiatan-item img {
+            width: 100%;
+            height: 250px;
+            /* Sedikit ditinggikan agar proporsional dengan layar lebar */
+            object-fit: cover;
+            display: block;
+        }
+
+        .kegiatan-caption {
+            padding: 1rem;
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            text-align: center;
+            font-weight: 500;
+            border-top: 1px solid var(--border-color);
+        }
+
         @media (max-width: 768px) {
             .content-section {
                 padding: 2rem 1.5rem;
+            }
+
+            .kegiatan-item img {
+                height: 200px;
             }
         }
     </style>
@@ -231,19 +269,16 @@
 
         <!-- ABOUT -->
         <section class="content-section">
-
             <h2>
                 <i class="fa-solid fa-building"></i>
                 Tentang Pekerjaan
             </h2>
-
             <p>
                 Selama menjalani program magang sebagai <b>Data Analyst</b>,
                 saya bertanggung jawab membantu berbagai divisi dalam
                 mengolah data operasional menjadi laporan yang mudah dipahami
                 oleh manajemen.
             </p>
-
             <p>
                 Sebagian besar pekerjaan saya berfokus pada
                 otomatisasi laporan menggunakan Google Sheets,
@@ -253,115 +288,42 @@
                 serta memastikan kualitas data sebelum digunakan
                 sebagai dasar pengambilan keputusan.
             </p>
-
         </section>
 
         <!-- RESPONSIBILITIES -->
         <section class="content-section">
-
             <h2>
                 <i class="fa-solid fa-list-check"></i>
                 Tanggung Jawab
             </h2>
-
             <ul>
-
-                <li>
-                    Mengumpulkan data operasional dari berbagai divisi perusahaan.
-                </li>
-
-                <li>
-                    Membersihkan (Data Cleaning), memvalidasi,
-                    dan memastikan konsistensi data sebelum diproses.
-                </li>
-
-                <li>
-                    Membuat dashboard interaktif menggunakan
-                    Google Looker Studio.
-                </li>
-
-                <li>
-                    Mendesain KPI Dashboard untuk monitoring performa
-                    karyawan dan divisi.
-                </li>
-
-                <li>
-                    Membuat laporan operasional harian,
-                    mingguan,
-                    dan bulanan.
-                </li>
-
-                <li>
-                    Mengembangkan otomatisasi menggunakan
-                    Google Sheets Formula
-                    dan Google Apps Script.
-                </li>
-
-                <li>
-                    Melakukan analisis tren performa berdasarkan data KPI.
-                </li>
-
-                <li>
-                    Berkolaborasi dengan tim HR,
-                    Finance,
-                    Marketing,
-                    dan Management Development Program (MDP).
-                </li>
-
+                <li>Mengumpulkan data operasional dari berbagai divisi perusahaan.</li>
+                <li>Membersihkan (Data Cleaning), memvalidasi, dan memastikan konsistensi data sebelum diproses.</li>
+                <li>Membuat dashboard interaktif menggunakan Google Looker Studio.</li>
+                <li>Mendesain KPI Dashboard untuk monitoring performa karyawan dan divisi.</li>
+                <li>Membuat laporan operasional harian, mingguan, dan bulanan.</li>
+                <li>Mengembangkan otomatisasi menggunakan Google Sheets Formula dan Google Apps Script.</li>
+                <li>Melakukan analisis tren performa berdasarkan data KPI.</li>
+                <li>Berkolaborasi dengan tim HR, Finance, Marketing, dan Management Development Program (MDP).</li>
             </ul>
-
         </section>
 
         <!-- PROJECT -->
         <section class="content-section">
-
             <h2>
-
                 <i class="fa-solid fa-folder-open"></i>
-
                 Project yang Dikerjakan
-
             </h2>
-
             <ul>
-
-                <li>
-                    Dashboard KPI Karyawan
-                </li>
-
-                <li>
-                    Dashboard Recruitment
-                </li>
-
-                <li>
-                    Dashboard Pendapatan Per Program
-                </li>
-
-                <li>
-                    Dashboard Finance & Pembayaran
-                </li>
-
-                <li>
-                    Rekonsiliasi Data Peserta
-                </li>
-
-                <li>
-                    Otomatisasi Google Sheets menggunakan Formula
-                    ARRAYFORMULA, QUERY, FILTER,
-                    LET, SUMIFS,
-                    COUNTIFS,
-                    IMPORTRANGE,
-                    dan Apps Script.
-                </li>
-
-                <li>
-                    Monitoring performa konsultan berdasarkan KPI.
-                </li>
-
-                <li>
-                    Penyusunan dataset untuk kebutuhan dashboard
-                    manajemen.
-                </li>
+                <li>Dashboard KPI Karyawan</li>
+                <li>Dashboard Recruitment</li>
+                <li>Dashboard Pendapatan Per Program</li>
+                <li>Dashboard Finance & Pembayaran</li>
+                <li>Rekonsiliasi Data Peserta</li>
+                <li>Otomatisasi Google Sheets menggunakan Formula ARRAYFORMULA, QUERY, FILTER, LET, SUMIFS, COUNTIFS,
+                    IMPORTRANGE, dan Apps Script.</li>
+                <li>Monitoring performa konsultan berdasarkan KPI.</li>
+                <li>Penyusunan dataset untuk kebutuhan dashboard manajemen.</li>
             </ul>
         </section>
 
@@ -373,8 +335,8 @@
             </h2>
             <ol>
                 <li>Mengumpulkan data dari berbagai spreadsheet perusahaan.</li>
-                <li>Melakukan data cleaning,validasi,dan pengecekan duplikasi.</li>
-                <li>Menyusun formula otomatisagar proses pelaporan lebih efisien.</li>
+                <li>Melakukan data cleaning, validasi, dan pengecekan duplikasi.</li>
+                <li>Menyusun formula otomatis agar proses pelaporan lebih efisien.</li>
                 <li>Mengolah data menjadi dataset siap pakai.</li>
                 <li>Membuat visualisasi menggunakan Looker Studio.</li>
                 <li>Menyampaikan insight kepada manajemen.</li>
@@ -404,7 +366,6 @@
                 <i class="fa-solid fa-chart-line"></i>
                 Dampak Pekerjaan
             </h2>
-
             <ul>
                 <li>Mengurangi proses pelaporan manual melalui otomatisasi Google Sheets.</li>
                 <li>Mempermudah monitoring KPI karyawan melalui dashboard interaktif.</li>
@@ -412,12 +373,11 @@
                 <li>Menyediakan laporan operasional yang lebih cepat dan akurat untuk manajemen.</li>
                 <li>Mendukung proses pengambilan keputusan berbasis data.</li>
             </ul>
-
         </section>
-        <!-- Section 4: Cuplikan Hasil / Dashboard -->
+
+        <!-- VISUALISASI & DOKUMENTASI -->
         <section class="content-section">
             <h2><i class="fa-solid fa-chart-pie"></i> Visualisasi & Dashboard (Mockup)</h2>
-
             <div class="nda-notice">
                 <i class="fa-solid fa-lock"></i> <strong>NDA Notice:</strong> Dikarenakan kebijakan kerahasiaan
                 perusahaan (Non-Disclosure Agreement), data asli, angka spesifik, dan nama klien pada gambar di bawah
@@ -425,34 +385,103 @@
                 bangun.
             </div>
 
-            <!-- Tempatkan gambar SS/Mockup dashboard kamu di sini -->
             <div class="mockup-wrapper">
-                <!-- Ganti src dengan screenshot dashboard kamu (dummy/blur) -->
                 <img src="Img\data.png" alt="Mockup Dashboard Data Analyst"
                     onerror="this.style.backgroundColor='#1e293b'; this.style.height='300px';">
             </div>
             <div class="mockup-wrapper">
-                <!-- Ganti src dengan screenshot dashboard kamu (dummy/blur) -->
                 <img src="Img\KPI.png" alt="Mockup Dashboard Data Analyst"
                     onerror="this.style.backgroundColor='#1e293b'; this.style.height='300px';">
             </div>
             <div class="mockup-wrapper">
-                <!-- Ganti src dengan screenshot dashboard kamu (dummy/blur) -->
                 <img src="Img\Seleksi Peserta.png" alt="Mockup Dashboard Data Analyst"
                     onerror="this.style.backgroundColor='#1e293b'; this.style.height='300px';">
             </div>
             <div class="mockup-wrapper">
-                <!-- Ganti src dengan screenshot dashboard kamu (dummy/blur) -->
                 <img src="Img\HR.png" alt="Mockup Dashboard Data Analyst"
                     onerror="this.style.backgroundColor='#1e293b'; this.style.height='300px';">
             </div>
-            <p style="font-size: 0.9rem; text-align: center;">
+            <p style="font-size: 0.9rem; text-align: center; margin-bottom: 3rem;">
                 <em>Contoh tampilan Dashboard Performa KPI yang dirancang untuk pemantauan harian.</em>
             </p>
+
+            <hr style="border-color: rgba(255,255,255,0.1); margin-bottom: 2rem;">
+
+            <!-- Bagian Dokumentasi Kegiatan Magang -->
+            <h3 style="margin-bottom: 1.5rem; color: #fff; font-size: 1.3rem;">
+                <i class="fa-solid fa-camera"></i> Dokumentasi Kegiatan Magang
+            </h3>
+
+            <!-- Grid Galeri Foto (Styling sudah dipindah ke bagian atas <style>) -->
+            <div class="kegiatan-grid">
+
+                <div class="kegiatan-item">
+                    <img src="Img_magang\Finance.jpg" alt="Diskusi Tim Finance"
+                        onerror="this.style.backgroundColor='#334155'; this.alt='Gambar tidak ditemukan';">
+                    <div class="kegiatan-caption">
+                        Diskusi Tim Finance dengan Mentor Data Analyst
+                    </div>
+                </div>
+
+                <div class="kegiatan-item">
+                    <img src="Img_magang\Mentor.jpg" alt="Mentor Data Analyst"
+                        onerror="this.style.backgroundColor='#334155'; this.alt='Gambar tidak ditemukan';">
+                    <div class="kegiatan-caption">
+                        Mentor Data Analyst
+                    </div>
+                </div>
+
+                <div class="kegiatan-item">
+                    <img src="Img_magang\HR.jpg" alt="Mentor Data Analyst"
+                        onerror="this.style.backgroundColor='#334155'; this.alt='Gambar tidak ditemukan';">
+                    <div class="kegiatan-caption">
+                        Diskusi HR dan Konten Kreator
+                    </div>
+                </div>
+
+                <div class="kegiatan-item">
+                    <img src="Img_magang\GA.jpg" alt="Mentor Data Analyst"
+                        onerror="this.style.backgroundColor='#334155'; this.alt='Gambar tidak ditemukan';">
+                    <div class="kegiatan-caption">
+                        General Afair Pusat dan Last Day Konten Kreator Jakarta
+                    </div>
+                </div>
+
+                <div class="kegiatan-item">
+                    <img src="Img_magang\Bukber1.jpg" alt="Buka Bersama"
+                        onerror="this.style.backgroundColor='#334155'; this.alt='Gambar tidak ditemukan';">
+                    <div class="kegiatan-caption">
+                        Buka Bersama Peserta dan Staff
+                    </div>
+                </div>
+
+                <div class="kegiatan-item">
+                    <img src="Img_magang\Bukber2.jpg" alt="Buka Bersama Indonusa"
+                        onerror="this.style.backgroundColor='#334155'; this.alt='Gambar tidak ditemukan';">
+                    <div class="kegiatan-caption">
+                        Buka Bersama Peserta Indonusa dan Staff
+                    </div>
+                </div>
+
+                <div class="kegiatan-item">
+                    <img src="Img_magang\Padel1.jpg" alt="Olahraga Padel"
+                        onerror="this.style.backgroundColor='#334155'; this.alt='Gambar tidak ditemukan';">
+                    <div class="kegiatan-caption">
+                        Olahraga Padel bareng peserta dan Staff
+                    </div>
+                </div>
+
+                <div class="kegiatan-item">
+                    <img src="Img_magang\Padel2.jpg" alt="Olahraga Padel Staff"
+                        onerror="this.style.backgroundColor='#334155'; this.alt='Gambar tidak ditemukan';">
+                    <div class="kegiatan-caption">
+                        Olahraga Padel Staff
+                    </div>
+                </div>
+
+            </div>
         </section>
-
     </main>
-
 </body>
 
 </html>
